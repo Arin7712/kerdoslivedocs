@@ -2,7 +2,6 @@ import Image from "next/image";
 import UserTypeSelector from "./UserTypeSelector";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { set } from "mongoose";
 import { updateDocumentAccess } from "@/lib/actions/room.actions";
 import { removeCollaborator } from "@/lib/actions/room.actions";
 

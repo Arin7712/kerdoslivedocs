@@ -1,7 +1,7 @@
 'use client'
 
 import Loader from '@/components/Loader';
-import {LiveblocksProvider, ClientSideSuspense, RoomProvider} from '@liveblocks/react/suspense';
+import {LiveblocksProvider, ClientSideSuspense} from '@liveblocks/react/suspense';
 import { ReactNode } from 'react';
 import { getClerkUsers, getDocumentUsers } from '@/lib/actions/users.actions';
 import { useUser } from '@clerk/nextjs';

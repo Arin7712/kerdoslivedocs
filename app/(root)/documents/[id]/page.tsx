@@ -1,17 +1,14 @@
-import { Editor } from '@/components/editor/Editor';
-import Header from '@/components/Header';
-import {Montserrat} from '@next/font/google'
-import { SignedIn, SignInButton, SignedOut, UserButton } from '@clerk/nextjs';
+// import {Montserrat} from '@next/font/google'
 import CollaborativeRoom from '@/components/CollaborativeRoom';
 import { currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import { getDocument } from '@/lib/actions/room.actions';
 import { getClerkUsers } from '@/lib/actions/users.actions';
 
-const montserrat = Montserrat({
+{/*const montserrat = Montserrat({
     subsets: ['latin'], // Specify subsets if needed
     weight: ['400', '700'], // Specify the font weights you're using
-  });
+  });*/}
 
   const Document = async ({ params: { id } }: SearchParamProps) => {
     const clerkUser = await currentUser();

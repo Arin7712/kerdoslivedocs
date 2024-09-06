@@ -33,12 +33,18 @@ const ShareModal = ({
   const [email, setEmail] = useState(""); // email of the user we're trying to add
   const [userType, setUserType] = useState<UserType>("viewer"); // state to decide the type of user (editor or viewer)
 
-  const shareDocumentHandler = async (type: string) => {
+  const shareDocumentHandler = async () => {
     setLoading(true);
 
-    await updateDocumentAccess({roomId, email, userType: userType as UserType, updatedBy: user.info})
+    await updateDocumentAccess({ 
+      roomId, 
+      email, 
+      userType: userType as UserType, 
+      updatedBy: user.info,
+    });
+
     setLoading(false);
-  };
+  }
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
