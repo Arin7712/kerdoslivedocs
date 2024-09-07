@@ -11,6 +11,7 @@ import {
   $createParagraphNode,
   $isRootOrShadowRoot,
   $getSelection,
+  $getRoot,
   $isRangeSelection,
   CAN_REDO_COMMAND,
   CAN_UNDO_COMMAND,
@@ -19,7 +20,11 @@ import {
   REDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
   UNDO_COMMAND,
+  LexicalCommand,
+  LexicalEditor,
+  COMMAND_PRIORITY_LOW,
 } from 'lexical';
+
 import {
   $createHeadingNode,
   $createQuoteNode,
@@ -36,11 +41,12 @@ import {
   useSyncExternalStore,
 } from 'react';
 
-const LowPriority = 1;
+const LowPriority = 1;;
 
 function Divider() {
   return <div className="divider" />;
 }
+
 
 export default function ToolbarPlugin() {
   const [editor] = useLexicalComposerContext();
@@ -51,6 +57,7 @@ export default function ToolbarPlugin() {
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
   const [isStrikethrough, setIsStrikethrough] = useState(false);
+  const[textColor, setTextColor] = useState('#000000') // text color state
   const activeBlock = useActiveBlock();
 
   const $updateToolbar = useCallback(() => {
@@ -94,9 +101,14 @@ export default function ToolbarPlugin() {
           return false;
         },
         LowPriority,
-      ),
-    );
-  }, [editor, $updateToolbar]);
+      ),editor.registerUpdateListener(({ editorState }) => {
+        editorState.read(() => {
+          $updateToolbar();
+        });
+      })    
+    
+  )}, [editor, $updateToolbar]);
+
 
   function toggleBlock(type: 'h1' | 'h2' | 'h3' | 'quote') {
     const selection = $getSelection();

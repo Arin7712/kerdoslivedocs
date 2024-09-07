@@ -33,11 +33,11 @@ const Home = async() => {
           <h3 className='text-28-semibold'>All Documents</h3>
           <AddDocumentBtn userId={clerkUser.id} email={clerkUser.emailAddresses[0].emailAddress}/>
           </div>
-          <ul className='document-ul'>
+          <ul className='document-ul '>
             {roomDocuments.data.map(({id, metadata, createdAt}: any)=> (
               <li key={id} className='document-list-item'>
-                <Link href={`/documents/${id}`} className='flex flex-1 items-center gap-4'>
-                <div className='hidden rounded-md bg-dark-500 p-2 sm:block'>
+                <Link href={`/documents/${id}`} className='flex flex-1 items-center gap-4 '>
+                <div className='hidden rounded-md  p-2 sm:block'>
                   <Image src='/assets/icons/doc.svg' alt='file' width={40} height={40}></Image>
                 </div>
                 <div className='space-y-1'>

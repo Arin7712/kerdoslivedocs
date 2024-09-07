@@ -334,6 +334,7 @@ pre::-webkit-scrollbar-thumb {
   padding: 8px;
   cursor: pointer;
   vertical-align: middle;
+  transition: 0.4s ease;
 }
 
 .toolbar button.toolbar-item:disabled {
@@ -368,7 +369,9 @@ pre::-webkit-scrollbar-thumb {
 }
 
 .toolbar .toolbar-item:hover:not([disabled]) {
-  background-color: #0f1c34;
+  background-color: #1e2544;
+  border-radius: 8px;
+  transition:0.4s ease
 }
 
 .toolbar .divider {

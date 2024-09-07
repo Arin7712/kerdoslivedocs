@@ -70,6 +70,10 @@ declare type SearchParamProps = {
     users: User[];
     currentUserType: UserType;
   };
+
+  declare type DownloadProps = {
+    docId : string
+  }
   
   declare type AddDocumentBtnProps = {
     userId: string;

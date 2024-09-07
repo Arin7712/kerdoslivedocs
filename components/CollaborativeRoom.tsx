@@ -10,6 +10,9 @@ import Image from 'next/image';
 import { updateDocument } from '@/lib/actions/room.actions';
 import Loader from './Loader';
 import ShareModal from './ShareModal';
+import { Button } from './ui/button';
+import jsPDF from 'jspdf';
+
 
 const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: CollaborativeRoomProps) => {
 
@@ -18,8 +21,13 @@ const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: Colla
   const[editing, setEditing] = useState(false);
   const[loading, setLoading] = useState(false);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLDivElement>(null);
+  const[download, setDownload] = useState();
+  const[generatedDoc, setGeneratedDoc] = useState();
+  const documentRef = useRef<HTMLElement>(null);
+
+  const containerRef = useRef(null);
+  const inputRef = useRef(null);
+
 
   const updateTitleHanlder = async(e : React.KeyboardEvent<HTMLInputElement>) => {
     if(e.key === 'Enter'){
@@ -81,9 +89,9 @@ const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: Colla
                 />
                 
                 : (
-                  <>
+                  <div ref={documentRef}>
                   <p className='document-title'>{documentTitle}</p>
-                  </>
+                  </div>
                 )
                 }
                 {currentUserType === 'editor' && !editing && (
@@ -96,7 +104,7 @@ const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: Colla
 
                 {loading && <p className='text-sm text-gray-400'>saving...</p>}
             </div>
-            <div className='flex w-full flex-1 justify-end gap-2 sm:gap-3'>
+            <div className='flex w-full flex-1 justify-end gap-2 sm:gap-3' >
               <ActiveCollaborators/>
               <ShareModal roomId={roomId} collaborators={users} creatorId={roomMetadata.creatorId} currentUserType={currentUserType}/>
             <SignedOut>
@@ -107,7 +115,9 @@ const CollaborativeRoom = ({roomId, roomMetadata, users, currentUserType}: Colla
           </SignedIn>
             </div>
         </Header>
-      <Editor roomId={roomId} currentUserType={currentUserType}/>
+        <div >
+      <Editor roomId={roomId} currentUserType={currentUserType} />
+      </div>
           </div>
         </ClientSideSuspense>
       </RoomProvider>

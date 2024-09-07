@@ -149,3 +149,4 @@ export const deleteDocument = async(roomId: string) => {
         console.log(`Error occured while deleting the document ${error}`)
     }
 }
+

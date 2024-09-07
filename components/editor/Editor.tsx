@@ -1,5 +1,6 @@
 "use client";
 
+// this file is imported in CollaborativeRoom.tsx
 import Theme from "./plugins/Theme";
 import ToolbarPlugin from "./plugins/ToolbarPlugin";
 import { HeadingNode } from "@lexical/rich-text";
@@ -16,13 +17,16 @@ import FloatingToolbar from "./plugins/FloatingToolbarPlugin";
 import { useThreads } from '@liveblocks/react/suspense';
 import Comments from "../Comments";
 import { DeleteModal } from "../DeleteModal";
-// Catch any errors that occur during Lexical updates and log them
+import { useEffect, useRef } from "react";
 // or throw them as needed. If you don't throw them, Lexical will
 // try to recover gracefully without losing user data.
 
+
+
 function Placeholder() {
-  return <div className="editor-placeholder">Enter some rich text...</div>;
+  return <div className="editor-placeholder">your text...</div>;
 }
+
 
 export function Editor({
   roomId,
@@ -44,6 +48,7 @@ export function Editor({
     theme: Theme,
     editable: currentUserType === "editor",
   });
+ // This is a custom hook to get the editor instance
 
   return (
     <LexicalComposer initialConfig={initialConfig}>

@@ -10,7 +10,7 @@
 /* ========================================== TAILWIND STYLES */
 @layer base {
   :root {
-    background: #09111f;
+    background: #050505;
     color: #fff;
     margin: 0;
   }
@@ -44,6 +44,10 @@
   }
 
   .gradient-blue {
+    @apply bg-gradient-to-t from-blue-500 to-blue-400;
+  }
+
+  .gradient-silver {
     @apply bg-gradient-to-t from-blue-500 to-blue-400;
   }
   .gradient-red {
@@ -91,7 +95,7 @@
   }
 
   .header {
-    @apply min-h-[92px] min-w-full flex-nowrap bg-dark-100 flex w-full items-center justify-between gap-2 px-4;
+    @apply min-h-[92px] min-w-full flex-nowrap bg-black text-white flex w-full items-center justify-between gap-2 px-4;
   }
 
   .document-list-container {
@@ -152,7 +156,7 @@
 
   /* ======================== Auth Pages */
   .auth-page {
-    @apply flex h-screen w-full flex-col items-center justify-center gap-10;
+    @apply flex h-screen w-full flex-col items-center justify-center gap-10 bg-black text-white;
   }
 
   /* ======================== Home Page */
