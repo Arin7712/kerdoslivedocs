@@ -20,6 +20,7 @@ import { getClerkUsers } from '@/lib/actions/users.actions';
     });
   
     if(!room) redirect('/');
+    console.log(clerkUser);
   
     const userIds = Object.keys(room.usersAccesses);
     const users = await getClerkUsers({ userIds });

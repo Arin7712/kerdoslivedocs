@@ -24,7 +24,7 @@ import { useEffect, useRef } from "react";
 
 
 function Placeholder() {
-  return <div className="editor-placeholder">your text...</div>;
+  return <div className="editor-placeholder">enter text...</div>;
 }
 
 

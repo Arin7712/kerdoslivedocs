@@ -14,7 +14,7 @@ const ThreadWrapper = ({ thread }: ThreadWrapperProps) => {
       className={cn(
         "comment-thread border rounded-sm",
         isActive && "!border-blue-500 shadow-md",
-        thread.resolved && "opacity-40"
+        thread.resolved && "opacity-40",
       )}
     />
   );

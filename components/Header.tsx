@@ -9,8 +9,8 @@ const Header = ({children, className} : HeaderProps) => {
         <Image
           src="/assets/icons/thekerdos.png"
           alt="logo with name"
-          width={180}
-          height={64}
+          width={140}
+          height={0}
           className="hidden md:block"
         ></Image>
         {/*<Image
